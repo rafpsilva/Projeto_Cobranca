@@ -15,11 +15,10 @@ Begin VB.Form TelaInicial
       TabIndex        =   0
       Top             =   120
       Width           =   10095
-      Begin VB.TextBox Text5 
+      Begin VB.TextBox Cpf_CnpjClientes 
          Height          =   285
          Left            =   5160
          TabIndex        =   11
-         Text            =   "Text5"
          Top             =   1560
          Width           =   2415
       End
@@ -29,11 +28,18 @@ Begin VB.Form TelaInicial
          TabIndex        =   9
          Top             =   1920
          Width           =   9855
-         Begin VB.TextBox Text6 
+         Begin VB.CommandButton NovoImportClientes 
+            Caption         =   "Importar Clientes"
+            Height          =   495
+            Left            =   5880
+            TabIndex        =   15
+            Top             =   240
+            Width           =   1335
+         End
+         Begin VB.TextBox StatusClientes 
             Height          =   285
             Left            =   960
             TabIndex        =   14
-            Text            =   "Text6"
             Top             =   360
             Width           =   1335
          End
@@ -130,35 +136,31 @@ Begin VB.Form TelaInicial
             Width           =   735
          End
       End
-      Begin VB.TextBox Text4 
+      Begin VB.TextBox EnderecoClientes 
          Height          =   285
          Left            =   840
          TabIndex        =   8
-         Text            =   "Text4"
          Top             =   1560
          Width           =   3255
       End
-      Begin VB.TextBox Text3 
+      Begin VB.TextBox NomeClientes 
          Height          =   285
          Left            =   4200
          TabIndex        =   6
-         Text            =   "Text3"
          Top             =   1080
-         Width           =   2895
+         Width           =   4095
       End
-      Begin VB.TextBox Text2 
+      Begin VB.TextBox ContraClientes 
          Height          =   285
          Left            =   840
          TabIndex        =   4
-         Text            =   "Text2"
          Top             =   1080
          Width           =   2535
       End
-      Begin VB.TextBox Text1 
+      Begin VB.TextBox PesqClientes 
          Height          =   285
          Left            =   960
          TabIndex        =   2
-         Text            =   "Text1"
          Top             =   360
          Width           =   1335
       End
@@ -209,3 +211,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Private Sub NovoImportClientes_Click()
+ImportClientes.Show
+
+End Sub
