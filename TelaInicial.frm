@@ -28,6 +28,14 @@ Begin VB.Form TelaInicial
          TabIndex        =   9
          Top             =   1920
          Width           =   9855
+         Begin VB.CommandButton GerarRelatorio 
+            Caption         =   "Gerar Relatório"
+            Height          =   495
+            Left            =   7440
+            TabIndex        =   16
+            Top             =   240
+            Width           =   1335
+         End
          Begin VB.CommandButton NovoImportClientes 
             Caption         =   "Importar Clientes"
             Height          =   495
@@ -211,6 +219,48 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Private Sub GerarRelatorio_Click()
+    ' Cria uma conexão com o banco de dados
+    Call conexaoDB.conexao
+    Dim appExcel As Object
+    Dim wb As Object
+    Dim ws As Object
+    Dim i As Integer
+    Dim strFileName As String
+    
+    ' Cria uma nova instância do Excel
+    Set appExcel = CreateObject("Excel.Application")
+    Set wb = appExcel.Workbooks.Add
+    ' Define a primeira planilha como a planilha ativa
+    Set ws = wb.Worksheets(1)
+    conectar.Open ConectaBanco
+    rs.Open "SELECT nome_cliente, cpf_cnpj FROM newbank", conectar, adOpenStatic, adLockOptimistic
+    ' Copia os dados do Recordset para a planilha
+    ws.Range("A2").CopyFromRecordset rs
+    ' Preenche a primeira linha com os nomes das colunas
+    For i = 1 To rs.Fields.Count
+        ws.Cells(1, i).Value = rs.Fields(i - 1).Name
+    Next i
+    ' Fecha o Recordset e a Conexão
+    rs.Close
+    conectar.Close
+
+    ' Obtém a data e hora atuais e formata como uma string
+    strFileName = Format(Now, "dd-MM-yyyy_HH-mm")
+    ' Adiciona a extensão do arquivo
+    strFileName = strFileName & ".xls"
+    ' Torna o Excel visível
+    ws.SaveAs "C:\Users\rafae\Downloads\relatorio_cliente" & strFileName
+    appExcel.Visible = True
+    ' Limpa as referências
+    Set rs = Nothing
+    Set cn = Nothing
+    Set ws = Nothing
+    Set wb = Nothing
+    Set appExcel = Nothing
+   
+End Sub
+
 Private Sub NovoImportClientes_Click()
 ImportClientes.Show
 

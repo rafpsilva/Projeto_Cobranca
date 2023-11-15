@@ -38,8 +38,8 @@ Begin VB.Form ImportClientes
          End
          Begin VB.CommandButton BtImportArquivo 
             Caption         =   "Salvar"
-            Height          =   255
-            Left            =   1920
+            Height          =   375
+            Left            =   2760
             TabIndex        =   7
             Top             =   3120
             Width           =   1215
@@ -155,5 +155,9 @@ Me.CaminhoArquivo.Text = Arquivo
 Else
 Me.CaminhoArquivo.Text = ""
 End If
+End Sub
+
+Private Sub listacliente()
+NomeCliente.List
 End Sub
 

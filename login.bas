@@ -11,7 +11,8 @@ Public Sub logar()
             strSql = "SELECT COUNT(*) FROM Usuarios WHERE nome='" & TelaLogin.TextLogin.Text & "' and senha ='" & TelaLogin.TextSenha.Text & "' and tipo ='" & TelaLogin.TipoUsuario.Text & "'"
             rs.Open strSql, conectar
             If rs(0) > 0 Then
-                TelaInicial.Show
+                'TelaInicial.Show
+                PaineldeControle.Show
                 TelaLogin.Visible = False
             Else
                 MsgBox "Usuário não cadastrado no banco de dados.", vbExclamation

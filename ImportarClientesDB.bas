@@ -36,7 +36,7 @@ Call conexaoDB.conexao
                  "'" & xlWorksheet.Cells(rowNum, 1).Value & "', " & _
                  "'" & xlWorksheet.Cells(rowNum, 2).Value & "') "
                
-        Conn.Execute strSql
+        conn.Execute strSql
         rowNum = rowNum + 1
     Loop
     
