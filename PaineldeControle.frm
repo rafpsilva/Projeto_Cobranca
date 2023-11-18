@@ -21,12 +21,28 @@ Begin VB.Form PaineldeControle
          TabIndex        =   2
          Top             =   1200
          Width           =   7575
-         Begin VB.CommandButton Command1 
-            Caption         =   "Command1"
-            Height          =   375
-            Left            =   1440
+         Begin VB.CommandButton BTGerarRelatorio 
+            Caption         =   "Gerar Relatório"
+            Height          =   495
+            Left            =   4200
+            TabIndex        =   7
+            Top             =   1920
+            Width           =   1335
+         End
+         Begin VB.CommandButton BTImportarCliente 
+            Caption         =   "Importar Clientes"
+            Height          =   495
+            Left            =   2640
+            TabIndex        =   6
+            Top             =   1920
+            Width           =   1335
+         End
+         Begin VB.CommandButton BTNovoBanco 
+            Caption         =   "Cadastrar Novo Banco"
+            Height          =   495
+            Left            =   1200
             TabIndex        =   5
-            Top             =   1800
+            Top             =   1920
             Width           =   1215
          End
          Begin VB.ComboBox Lista 
@@ -74,8 +90,15 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Private Sub Form_Load()
+Private Sub Command1_Click()
 
+' Cria uma nova instância do ComboBox
+Dim cmbBox As ComboBox
+Set cmbBox = PaineldeControle.Lista
+
+' Adiciona itens ao ComboBox
+cmbBox.AddItem "Item 1"
+cmbBox.AddItem "Item 2"
+cmbBox.AddItem "Item 3"
 
 End Sub
-
